@@ -1,1 +1,181 @@
-# mywebsite
+index.htlm
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+body{
+background:#08131f;
+font-family:Arial;
+color:white;
+padding:20px;
+margin:0;
+}
+
+.login-box,
+.dashboard{
+background:#10253d;
+padding:20px;
+border-radius:20px;
+margin-top:20px;
+}
+
+input{
+width:100%;
+padding:15px;
+border:none;
+border-radius:10px;
+margin-top:10px;
+box-sizing:border-box;
+}
+
+button{
+width:100%;
+padding:15px;
+background:#00cc66;
+color:white;
+border:none;
+border-radius:10px;
+margin-top:10px;
+font-size:18px;
+}
+
+.box{
+background:#1b3654;
+padding:15px;
+margin-top:10px;
+border-radius:10px;
+font-size:18px;
+}
+
+.menu{
+position:fixed;
+bottom:0;
+left:0;
+width:100%;
+background:#10253d;
+padding:15px;
+text-align:center;
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="loginPage" class="login-box">
+
+<h1>Login</h1>
+
+<input id="username" type="text" placeholder="Enter Name">
+
+<input type="password" placeholder="Password">
+
+<button onclick="login()">Login</button>
+
+<button onclick="showRegister()">Register</button>
+
+</div>
+
+<div id="dashboardPage" class="dashboard" style="display:none;">
+
+<h2 id="welcome">Welcome</h2>
+
+<div class="box" id="balanceBox">
+Balance: ₹0
+</div>
+
+<div class="box">
+Today's Income: ₹0
+</div>
+
+<div class="box">
+VIP Level: VIP0
+</div>
+
+<div class="box">
+Total Income: ₹5000
+</div>
+
+<button onclick="addMoney()">
+Add ₹100
+</button>
+
+<button onclick="withdraw()">
+Withdraw
+</button>
+
+</div>
+
+<div class="menu">
+Home | Invest | Wallet | Profile
+</div>
+
+<script>
+
+let balance = 0;
+
+function login(){
+
+let name =
+document.getElementById("username").value;
+
+localStorage.setItem("username", name);
+
+document.getElementById("welcome").innerHTML =
+"Welcome " + name;
+
+document.getElementById("loginPage").style.display =
+"none";
+
+document.getElementById("dashboardPage").style.display =
+"block";
+
+}
+
+function showRegister(){
+alert("Register Page Open");
+}
+
+function addMoney(){
+
+balance += 100;
+
+document.getElementById("balanceBox").innerHTML =
+"Balance: ₹" + balance;
+
+}
+
+function withdraw(){
+
+alert("Withdraw Clicked");
+
+}
+
+window.onload = function(){
+
+let savedName =
+localStorage.getItem("username");
+
+if(savedName){
+
+document.getElementById("welcome").innerHTML =
+"Welcome " + savedName;
+
+document.getElementById("loginPage").style.display =
+"none";
+
+document.getElementById("dashboardPage").style.display =
+"block";
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
